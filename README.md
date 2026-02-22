@@ -1,6 +1,7 @@
+```markdown
 <div align="center">
 
-#  FLARE
+# 🦙 FlaStruct & FLARE Dataset
 
 **Fine-grained Hate Speech Detection via Structured Generation**
 
@@ -10,56 +11,69 @@
 
 </div>
 
-> ### ⚠️ **ANONYMOUS SUBMISSION NOTICE**
+> ### 🚨 **ANONYMOUS SUBMISSION NOTICE**
 > This repository is currently under **double-blind peer review**. To comply with anonymity policies, author affiliations and identifying details have been removed. 
 > 
-> 📢 **The complete source code, training/evaluation scripts, pre-trained model weights, and the newly constructed Chinese Financial Hate Speech Dataset will be FULLY OPEN-SOURCED immediately upon paper acceptance.**
+> 📢 **The complete training/inference source code, the pre-trained `FlaStruct` model weights, and the `FLARE` dataset will be FULLY OPEN-SOURCED immediately upon paper acceptance.**
 
 ---
 
 ## 💡 Overview
 
-**Struct-Llama** introduces a paradigm shift in hate speech detection within Chinese financial communities. Instead of treating the problem as a traditional binary classification task, we fine-tune Large Language Models (e.g., Llama-3.1) via SFT to generate **structured JSON outputs**, jointly identifying the presence of hate speech, its target group, and the attack type.
+This repository hosts the code, model, and data for **FlaStruct**, a novel framework for fine-grained hate speech detection, and **FLARE**, a specialized Chinese financial community dataset. 
+
+Instead of treating hate speech detection as a traditional binary classification task, **FlaStruct** fine-tunes Large Language Models (e.g., Llama-3.1) to generate **structured JSON outputs**, jointly identifying the presence of hate speech, its target group, and the attack type in a single inference step.
 
 ## 🚀 The Paradigm Shift
 
 **❌ Traditional Vanilla-SFT:**
 ```json
 {"label": "hate"}
-✅ Struct-Llama (Ours):
 
-JSON
+```
+
+**✅ FlaStruct (Ours):**
+
+```json
 {
   "label": "hate", 
   "target_group": "Financial Role", 
   "attack_type": "Stereotyping"
 }
-(Built-in logical consistency: if label is non-hate, target_group and attack_type strictly default to neutral placeholders).
 
-✨ Key Highlights
-🎯 Multi-dimensional Extraction: Simultaneously predicts Label, Target Group, and Attack Type.
+```
 
-🧩 Structured Constraint: Ensures parsable, rule-compliant JSON generation for downstream pipeline integration.
+*(Built-in logical consistency: if `label` is `non-hate`, `target_group` and `attack_type` strictly default to neutral placeholders).*
 
-🛡️ Superior Robustness: Outperforms baseline models in in-domain detection, cross-domain generalization (ToxiCN), and adversarial testing.
+## 📦 What Will Be Released?
 
-🔬 Analytical Depth: Enables advanced linguistic analyses, including implicit metaphor detection and demographic-attack heatmaps.
+Upon acceptance, this repository will provide full access to:
 
-📂 Repository Skeleton
-The codebase is highly modularized for reproducibility. The full implementation will populate this structure post-acceptance:
+* **The FLARE Dataset**: A meticulously annotated dataset for fine-grained hate speech detection in Chinese financial domains.
+* **FlaStruct Model Weights**: LoRA weights and merged model checkpoints based on `Meta-Llama-3.1-8B-Instruct`.
+* **Core Codebase**: Clean, reproducible pipelines for data processing, SFT training, and structural JSON evaluation.
 
-Plaintext
-struct_llama/
-├── data/                  # 🔒 Dataset & splits (To be released)
+## 📂 Repository Skeleton
+
+The codebase is streamlined for out-of-the-box usage. The full implementation will populate this structure post-acceptance:
+
+```text
+flastruct_open/
+├── data/                  # 🔒 FLARE dataset & splits (To be released)
+├── model/                 # 🔒 FlaStruct pre-trained weights & LoRA adapters
 ├── src/
-│   └── conll_flare/
-│       ├── exp1_main/         # Core SFT training & inference pipeline
-│       ├── exp2_generalization/# Cross-domain (ToxiCN) evaluation
-│       ├── exp3_linguistic/   # Metaphor & heatmap analysis
-│       ├── exp4_ablation/     # Ablation studies
-│       ├── exp5_adversarial/  # Adversarial robustness testing
-│       └── utils/             # Data loaders, JSON parsers, metrics
-├── requirements.txt       # Dependencies
+│   ├── train/             # SFT training scripts & prompt builders
+│   ├── inference/         # Batch inference & structured JSON generation
+│   └── utils/             # Data loaders, JSON parsers, and evaluation metrics
+├── requirements.txt       # Environment dependencies
 └── README.md              # Documentation
-📝 License
-This project will be released under the MIT License. Base models and third-party datasets are subject to their respective original licenses.
+
+```
+
+## 📝 License
+
+This project will be released under the [MIT License](https://www.google.com/search?q=LICENSE). Base models (e.g., Llama-3.1) and any third-party tools are subject to their respective original licenses.
+
+```
+
+```
