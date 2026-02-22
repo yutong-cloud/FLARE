@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🦙 FlaStruct & FLARE Dataset
+# ✨ FlaStruct & FLARE Dataset
 
 **Fine-grained Hate Speech Detection via Structured Generation**
 
@@ -75,4 +75,3 @@ This project will be released under the [MIT License](https://www.google.com/sea
 
 ```
 
-```
