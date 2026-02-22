@@ -1,4 +1,3 @@
-```markdown
 <div align="center">
 
 # 🦙 FlaStruct & FLARE Dataset
@@ -30,7 +29,7 @@ Instead of treating hate speech detection as a traditional binary classification
 ```json
 {"label": "hate"}
 
-```
+
 
 **✅ FlaStruct (Ours):**
 
